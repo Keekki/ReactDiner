@@ -6,8 +6,8 @@ const MenuItem = ({ item }) => {
     <div className="menu-item">
       <img src={`http://localhost:5000/${item.image}`} alt={item.name} />
       <h2>{item.name}</h2>
-      <p>{item.description}</p>
-      <p>${item.price}</p>
+      <p className="item-description">{item.description}</p>
+      <p className="item-price">${item.price}</p>
       <button>Add to Cart</button>
     </div>
   );
