@@ -2,14 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../styling/HomePage.css";
 
+import Carbonara from "../assets/carbonara.png";
+
 const HomePage = () => {
   return (
     <div className="home">
-      <h1>Welcome to Our Restaurant!</h1>
-      <p>Enjoy our delicious dishes and amazing service.</p>
+      <div className="container">
+        <h1>Welcome to Our Authentic React Restaurant!</h1>
+      </div>
       <Link to="/menu" className="menu-button">
         Check Menu
       </Link>
+      <img src={Carbonara} alt="Carbonara" className="menu-pic" />
     </div>
   );
 };

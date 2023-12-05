@@ -5,8 +5,8 @@ import "../styling/Header.css";
 const Header = () => {
   return (
     <header className="header">
-      <Link to="/">
-        <div className="logo">Restaurant Logo</div>
+      <Link to="/" className="logo-link">
+        <div className="logo">React Dine</div>
       </Link>
       <nav>
         <ul className="nav-links">
@@ -15,6 +15,9 @@ const Header = () => {
           </li>
           <li>
             <Link to="/cart">Cart</Link>
+          </li>
+          <li>
+            <Link to="/about">About us</Link>
           </li>
         </ul>
       </nav>
