@@ -1,10 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "../styling/Header.css";
 
 const Header = () => {
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
+
   return (
-    <header className="header">
+    <header className={`header ${isHomePage ? "homepage" : "other"}`}>
       <Link to="/" className="logo-link">
         <div className="logo">React Dine</div>
       </Link>
