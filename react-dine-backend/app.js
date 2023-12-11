@@ -10,6 +10,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(express.static("./public"));
 app.use("/images", express.static("public/images"));
+app.use("/assets/videos", express.static("public/videos")); // Serve static files from the videos directory
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
