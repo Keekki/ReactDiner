@@ -13,7 +13,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
   text-align: center;
   background-color: transparent;
   width: 100%;
@@ -23,7 +23,7 @@
   font-size: 3rem;
   color: white;
   max-width: 400px;
-  margin-top: -120px;
+  margin-top: 550px;
   text-align: left;
 }
 
@@ -39,7 +39,7 @@
   font-family: Garamond;
   position: absolute;
   left: 175px;
-  margin-top: 190px;
+  margin-top: 840px;
 }
 
 .menu-button:hover {
