@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import Cart from "./Cart";
 import "../styling/Header.css";
 
 const Header = () => {
   const location = useLocation();
   const isHomePage = location.pathname === "/";
+  const [isCartOpen, setCartOpen] = useState(false);
 
   return (
     <header className={`header ${isHomePage ? "homepage" : "other"}`}>
@@ -17,13 +19,22 @@ const Header = () => {
             <Link to="/menu">Menu</Link>
           </li>
           <li>
-            <Link to="/cart">Cart</Link>
+            <Link
+              to="/cart"
+              onClick={(e) => {
+                e.preventDefault();
+                setCartOpen(!isCartOpen);
+              }}
+            >
+              Cart
+            </Link>
           </li>
           <li>
             <Link to="/about">About us</Link>
           </li>
         </ul>
       </nav>
+      {isCartOpen && <Cart />}
     </header>
   );
 };

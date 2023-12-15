@@ -3,7 +3,12 @@ import CartContext from "./CartContext";
 import "../styling/Cart.css";
 
 const Cart = () => {
-  const { cartItems } = useContext(CartContext); // Get the cartItems from the CartContext
+  const { cartItems, removeFromCart } = useContext(CartContext); // Get the cartItems and removeFromCart from the CartContext
+
+  const total = cartItems.reduce(
+    (total, item) => total + Number(item.price),
+    0
+  );
 
   return (
     <div className="cart">
@@ -12,8 +17,11 @@ const Cart = () => {
         <div key={item.id}>
           <h3>{item.name}</h3>
           <p>${item.price}</p>
+          <button onClick={() => removeFromCart(item.id)}>🗑️</button>
         </div>
       ))}
+      <p>Total: $${total.toFixed(2)}</p>
+      <button>Order</button>
     </div>
   );
 };

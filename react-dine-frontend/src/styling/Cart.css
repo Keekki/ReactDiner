@@ -1,5 +1,5 @@
 .cart {
-  position: fixed;
+  position: absolute;
   right: 5px;
   top: 120px;
   width: 360px;
@@ -10,6 +10,7 @@
   box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   border: 1px solid white;
+  z-index: 100;
 }
 
 .cart h2 {
