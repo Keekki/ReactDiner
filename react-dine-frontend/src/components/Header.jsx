@@ -8,6 +8,8 @@ const Header = () => {
   const isHomePage = location.pathname === "/";
   const [isCartOpen, setCartOpen] = useState(false);
 
+  const closeCart = () => setCartOpen(false);
+
   return (
     <header className={`header ${isHomePage ? "homepage" : "other"}`}>
       <Link to="/" className="logo-link">
@@ -23,7 +25,7 @@ const Header = () => {
               to="/cart"
               onClick={(e) => {
                 e.preventDefault();
-                setCartOpen(!isCartOpen);
+                setCartOpen(true);
               }}
             >
               Cart
@@ -34,7 +36,7 @@ const Header = () => {
           </li>
         </ul>
       </nav>
-      {isCartOpen && <Cart />}
+      {isCartOpen && <Cart closeCart={closeCart} />}
     </header>
   );
 };
