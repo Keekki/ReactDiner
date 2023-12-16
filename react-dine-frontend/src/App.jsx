@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import HomePage from "./pages/HomePage";
@@ -8,8 +8,17 @@ import AboutUs from "./pages/AboutUs";
 import { CartProvider } from "./components/CartContext";
 
 const App = () => {
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/dishes")
+      .then((response) => response.json())
+      .then((data) => setItems(data))
+      .catch((error) => console.error(error));
+  }, []);
+
   return (
-    <CartProvider>
+    <CartProvider items={items}>
       <Router>
         <Header />
         <Routes>
