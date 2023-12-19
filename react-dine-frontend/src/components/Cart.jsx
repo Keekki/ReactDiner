@@ -1,5 +1,6 @@
 import React, { useContext, useRef, useEffect } from "react";
 import CartContext from "./CartContext";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import "../styling/Cart.css";
 
 const Cart = ({ closeCart }) => {
@@ -37,7 +38,10 @@ const Cart = ({ closeCart }) => {
               {item.name} x{cartItems[itemId]}
             </h3>
             <p>${itemTotal.toFixed(2)}</p>
-            <button onClick={() => removeFromCart(itemId)}>🗑️</button>
+            <DeleteForeverIcon
+              onClick={() => removeFromCart(itemId)}
+              style={{ color: "red", cursor: "pointer" }}
+            ></DeleteForeverIcon>
           </div>
         );
       })}
