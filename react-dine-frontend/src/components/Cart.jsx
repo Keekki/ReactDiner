@@ -40,7 +40,12 @@ const Cart = ({ closeCart }) => {
             <p>${itemTotal.toFixed(2)}</p>
             <DeleteForeverIcon
               onClick={() => removeFromCart(itemId)}
-              style={{ color: "red", cursor: "pointer" }}
+              style={{
+                color: "red",
+                cursor: "pointer",
+                float: "right",
+                marginTop: "-35px",
+              }}
             ></DeleteForeverIcon>
           </div>
         );
