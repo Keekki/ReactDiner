@@ -28,6 +28,10 @@ export const CartProvider = ({ children, items }) => {
 
   const removeFromCart = (itemId) => {
     setCartItems((prevItems) => {
+      if (prevItems[itemId] > 1) {
+        return { ...prevItems, [itemId]: prevItems[itemId] - 1 };
+      }
+
       const { [itemId]: _, ...rest } = prevItems;
       return rest;
     });

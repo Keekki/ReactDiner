@@ -25,10 +25,9 @@ const Cart = ({ closeCart }) => {
       cartItems[itemId] * items.find((item) => item.id === itemId).price,
     0
   );
-  //TODO:: removing an item removes all of the same items, fix it
+
   return (
     <div ref={cartRef} className="cart">
-      <h2>Your Cart</h2>
       {Object.keys(cartItems).map((itemId) => {
         const item = items.find((item) => item.id === itemId);
         const itemTotal = item.price * cartItems[itemId];
