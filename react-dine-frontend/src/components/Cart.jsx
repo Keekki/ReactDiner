@@ -28,29 +28,35 @@ const Cart = ({ closeCart }) => {
 
   return (
     <div ref={cartRef} className="cart">
-      {Object.keys(cartItems).map((itemId) => {
-        const item = items.find((item) => item.id === itemId);
-        const itemTotal = item.price * cartItems[itemId];
-        return (
-          <div key={itemId}>
-            <h3>
-              {item.name} x{cartItems[itemId]}
-            </h3>
-            <p>${itemTotal.toFixed(2)}</p>
-            <DeleteForeverIcon
-              onClick={() => removeFromCart(itemId)}
-              style={{
-                color: "red",
-                cursor: "pointer",
-                float: "right",
-                marginTop: "-35px",
-              }}
-            ></DeleteForeverIcon>
-          </div>
-        );
-      })}
-      <p>Total: ${total.toFixed(2)}</p>
-      <button className="order-button">Order</button>
+      {Object.keys(cartItems).length === 0 ? (
+        <p>Your cart appears to be empty ☹</p>
+      ) : (
+        <>
+          {Object.keys(cartItems).map((itemId) => {
+            const item = items.find((item) => item.id === itemId);
+            const itemTotal = item.price * cartItems[itemId];
+            return (
+              <div key={itemId}>
+                <h3>
+                  {item.name} x{cartItems[itemId]}
+                </h3>
+                <p>${itemTotal.toFixed(2)}</p>
+                <DeleteForeverIcon
+                  onClick={() => removeFromCart(itemId)}
+                  style={{
+                    color: "red",
+                    cursor: "pointer",
+                    float: "right",
+                    marginTop: "-35px",
+                  }}
+                ></DeleteForeverIcon>
+              </div>
+            );
+          })}
+          <p>Total: ${total.toFixed(2)}</p>
+          <button className="order-button">Order</button>
+        </>
+      )}
     </div>
   );
 };
