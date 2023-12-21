@@ -50,7 +50,7 @@ const Cart = ({ closeCart }) => {
         );
       })}
       <p>Total: ${total.toFixed(2)}</p>
-      <button>Order</button>
+      <button className="order-button">Order</button>
     </div>
   );
 };
