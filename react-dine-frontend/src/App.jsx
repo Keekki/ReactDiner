@@ -7,6 +7,7 @@ import Menu from "./pages/Menu";
 import Cart from "./components/Cart";
 import AboutUs from "./pages/AboutUs";
 import { CartProvider } from "./components/CartContext";
+import OrderForm from "./pages/OrderForm";
 
 const App = () => {
   const [items, setItems] = useState([]);
@@ -26,6 +27,7 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/menu" element={<Menu />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/order" element={<OrderForm />} />
           <Route path="/about" element={<AboutUs />} />
         </Routes>
         <Toaster position="top-right" reverseOrder={false} />

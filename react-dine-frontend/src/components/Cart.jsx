@@ -1,11 +1,18 @@
 import React, { useContext, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import CartContext from "./CartContext";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import OrderFrom from "../pages/OrderForm";
 import "../styling/Cart.css";
 
 const Cart = ({ closeCart }) => {
   const { cartItems, removeFromCart, items } = useContext(CartContext);
   const cartRef = useRef();
+  const navigate = useNavigate();
+
+  const order = () => {
+    navigate("/order");
+  };
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -54,7 +61,9 @@ const Cart = ({ closeCart }) => {
             );
           })}
           <p>Total: ${total.toFixed(2)}</p>
-          <button className="order-button">Order</button>
+          <button className="order-button" onClick={order}>
+            Order
+          </button>
         </>
       )}
     </div>
