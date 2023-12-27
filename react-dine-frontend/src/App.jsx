@@ -8,6 +8,7 @@ import Cart from "./components/Cart";
 import AboutUs from "./pages/AboutUs";
 import { CartProvider } from "./components/CartContext";
 import OrderForm from "./pages/OrderForm";
+import ConfirmOrder from "./pages/ConfirmOrder";
 
 const App = () => {
   const [items, setItems] = useState([]);
@@ -28,6 +29,7 @@ const App = () => {
           <Route path="/menu" element={<Menu />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/order" element={<OrderForm />} />
+          <Route path="/confirm-order" element={<ConfirmOrder />} />
           <Route path="/about" element={<AboutUs />} />
         </Routes>
         <Toaster position="top-right" reverseOrder={false} />

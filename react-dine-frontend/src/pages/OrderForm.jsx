@@ -24,10 +24,15 @@ const OrderForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (Object.values(customer).every((value) => value !== "")) {
-      // Send the order to the backend
       const order = {
         order: {
-          customer: customer,
+          customer: {
+            name: customer.name,
+            email: customer.email,
+            street: customer.street,
+            "postal-code": customer.postalCode,
+            city: customer.city,
+          },
           items: Object.keys(cartItems).map((itemId) => ({
             id: itemId,
             quantity: cartItems[itemId],
@@ -43,14 +48,19 @@ const OrderForm = () => {
         .then((response) => response.json())
         .then((data) => {
           if (data.message === "Order created!") {
-            // TODO: Redirect to the order confirmation page
+            // Save the order data to local storage
+            localStorage.setItem(
+              "order",
+              JSON.stringify({ order: order.order })
+            );
+
+            // Redirect to the order confirmation page
+            window.location.href = "/confirm-order";
           } else {
             console.error("Failed to create order:", data);
           }
         })
         .catch((error) => console.error("Error:", error));
-
-      // Fetch request to the backend...
     } else {
       setTouched(true);
     }
@@ -69,6 +79,7 @@ const OrderForm = () => {
 
   return (
     <div className="order-form">
+      <h2>Order Info</h2>
       <form onSubmit={handleSubmit}>
         <TextField
           label="Name"
@@ -162,7 +173,7 @@ const OrderForm = () => {
             },
           }}
         >
-          Confirm Order
+          Place Order
         </Button>
       </form>
     </div>

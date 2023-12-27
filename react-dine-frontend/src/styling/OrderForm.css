@@ -15,6 +15,12 @@
   gap: 20px;
 }
 
+.order-form h2 {
+  font-family: Garamond;
+  margin-right: 190px;
+  color: orange;
+}
+
 .order-form .MuiTextField-root {
   width: 300px;
   color: white;
