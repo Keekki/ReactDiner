@@ -91,6 +91,9 @@ const ConfirmOrder = () => {
       },
       duration: 5000,
     });
+    setTimeout(() => {
+      window.location.href = "/";
+    }, 5000);
   };
 
   return (
