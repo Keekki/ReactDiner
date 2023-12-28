@@ -18,8 +18,7 @@ export const CartProvider = ({ children, items }) => {
         padding: "16px",
         color: "white",
         background: "black",
-        marginLeft: "800px",
-        marginTop: "70px",
+        marginLeft: "1100px",
       },
       iconTheme: {
         primary: "orange",
