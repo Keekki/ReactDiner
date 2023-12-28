@@ -32,7 +32,7 @@ const App = () => {
           <Route path="/confirm-order" element={<ConfirmOrder />} />
           <Route path="/about" element={<AboutUs />} />
         </Routes>
-        <Toaster position="top-right" reverseOrder={false} />
+        <Toaster position="top-center" reverseOrder={false} />
       </Router>
     </CartProvider>
   );

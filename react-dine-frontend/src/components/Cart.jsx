@@ -2,7 +2,6 @@ import React, { useContext, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import CartContext from "./CartContext";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-import OrderFrom from "../pages/OrderForm";
 import "../styling/Cart.css";
 
 const Cart = ({ closeCart }) => {
