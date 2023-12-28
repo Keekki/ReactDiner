@@ -5,6 +5,17 @@ const { v4: uuidv4 } = require("uuid");
 const bodyParser = require("body-parser");
 const express = require("express");
 
+const { google } = require("googleapis");
+const { OAuth2 } = google.auth;
+
+const oauth2Client = new OAuth2(
+  "645518468833-n717gm661pgi1rstp2veuctrnl0cmfte.apps.googleusercontent.com",
+  "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",
+  "http://127.0.0.1:5173/callback"
+);
+
+const nodemailer = require("nodemailer"); // Adding nodemailer to send a confirmation email
+
 const app = express();
 
 app.use(bodyParser.json());
@@ -70,6 +81,68 @@ app.post("/api/orders", async (req, res) => {
   allOrders.push(newOrder);
 
   await fs.writeFile("./data/orders.json", JSON.stringify(allOrders));
+
+  let mailOptions = {
+    from: "frimonreactdine@gmail.com",
+    to: newOrder.customer.email,
+    subject: "Order Confirmation",
+    text: "Your order has been placed!\n\nALERT! This is a mock message from a throwaway account created\n\nonly to present a functionality in the ReactDine app!!\n\nNOTHING HAS BEEN ORDERED!",
+  };
+
+  // Path to the file where the refresh token will be stored
+  const REFRESH_TOKEN_PATH = "./refreshToken.txt";
+
+  const getTokensAndSetCredentials = async () => {
+    let refreshToken = "";
+    try {
+      refreshToken = await fs.readFile(REFRESH_TOKEN_PATH, "utf8");
+    } catch (err) {
+      console.error("Error reading refresh token from file: ", err);
+      return;
+    }
+
+    oauth2Client.setCredentials({ refresh_token: refreshToken });
+
+    let accessToken;
+    try {
+      accessToken = await new Promise((resolve, reject) => {
+        oauth2Client.getAccessToken((err, token) => {
+          if (err) {
+            console.error("Error during getAccessToken", err);
+            reject("Failed to create access token :(");
+          }
+          resolve(token);
+        });
+      });
+    } catch (error) {
+      console.error("Error getting access token: ", error);
+      return;
+    }
+
+    let transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        type: "OAuth2",
+        user: "frimonreactdine@gmail.com",
+        clientId:
+          "645518468833-n717gm661pgi1rstp2veuctrnl0cmfte.apps.googleusercontent.com",
+        clientSecret: "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",
+        refreshToken: refreshToken,
+        accessToken: accessToken,
+      },
+    });
+
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log("Email sent: " + info.response);
+      }
+    });
+  };
+
+  getTokensAndSetCredentials();
+
   res.status(201).json({ message: "Order created!" });
 });
 
