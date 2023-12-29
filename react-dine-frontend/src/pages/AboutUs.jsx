@@ -40,8 +40,7 @@ const AboutUs = () => {
         The page is made with React with a Node backend. You can test out the
         functionality of the page by placing an order, you should get a
         confirmation email of the order to your email from
-        frimonreactdine@gmail.com if you input your email when ordering. The app
-        is deployed using Microsoft Azure.
+        frimonreactdine@gmail.com if you input your email when ordering.
       </p>
       <p style={footerStyle}>
         <span style={spanStyle}>Made by</span> Matias Frimodig
