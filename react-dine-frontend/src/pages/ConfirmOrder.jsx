@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/system";
 import CircularProgress from "@mui/material/CircularProgress";
-import { toast, Toaster } from "react-hot-toast";
+import { toast } from "react-hot-toast";
 
 // Create a mapping from item IDs to item names
 const itemNameMap = {
@@ -34,6 +34,29 @@ const itemNameMap = {
   d18: "Eggplant Parmesan",
   d19: "Lemon Cheesecake",
   d20: "Falafel Wrap",
+};
+
+const itemPriceMap = {
+  d1: "8.99",
+  d2: "12.99",
+  d3: "7.99",
+  d4: "10.99",
+  d5: "9.99",
+  d6: "10.99",
+  d7: "17.99",
+  d8: "15.99",
+  d9: "13.99",
+  d10: "11.99",
+  d11: "19.99",
+  d12: "8.99",
+  d13: "12.99",
+  d14: "9.99",
+  d15: "5.99",
+  d16: "14.99",
+  d17: "13.99",
+  d18: "11.99",
+  d19: "6.99",
+  d20: "8.99",
 };
 
 // Create a dark theme
@@ -96,6 +119,15 @@ const ConfirmOrder = () => {
     }, 5000);
   };
 
+  // Calculate the total price
+  const total = order.items.reduce((total, orderItem) => {
+    const itemPrice = parseFloat(itemPriceMap[orderItem.id]);
+    if (itemPrice) {
+      return total + orderItem.quantity * itemPrice;
+    }
+    return total;
+  }, 0);
+
   return (
     <ThemeProvider theme={theme}>
       <Box bgcolor="black" p={4} minHeight="100vh" color="white">
@@ -152,6 +184,13 @@ const ConfirmOrder = () => {
                   </OrderItem>
                 ))}
               </ul>
+              <Typography
+                variant="h6"
+                gutterBottom
+                sx={{ fontSize: "1.6rem", fontWeight: "bold", color: "orange" }}
+              >
+                Total Price: ${total.toFixed(2)}
+              </Typography>
             </Paper>
           </Grid>
         </Grid>
