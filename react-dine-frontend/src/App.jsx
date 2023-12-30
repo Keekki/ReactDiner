@@ -14,7 +14,7 @@ const App = () => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/dishes")
+    fetch("https://reactdinebackend.onrender.com/api/dishes")
       .then((response) => response.json())
       .then((data) => setItems(data))
       .catch((error) => console.error(error));
