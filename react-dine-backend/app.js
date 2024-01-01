@@ -154,4 +154,8 @@ app.use((req, res) => {
   res.status(404).json({ message: "Not found" });
 });
 
+app.get("/healthCheck", (req, res) => {
+  res.status(200).send("all good");
+});
+
 module.exports = app;
