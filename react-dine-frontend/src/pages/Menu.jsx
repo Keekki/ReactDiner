@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import MenuItem from "../components/MenuItem";
 import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
 import "../styling/Menu.css";
 
 const Menu = () => {
@@ -43,7 +44,19 @@ const Menu = () => {
   const desserts = ["d12", "d15", "d19"];
 
   if (isLoading) {
-    return <CircularProgress />; // Show CircularProgress when loading
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          height: "100vh",
+          alignItems: "center",
+          justifyContent: "center",
+          backgroundColor: "black",
+        }}
+      >
+        <CircularProgress color="inherit" />
+      </Box>
+    ); // Show CircularProgress when loading
   }
 
   return (
