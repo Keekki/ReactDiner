@@ -1,15 +1,24 @@
 import React, { useState, useEffect } from "react";
 import MenuItem from "../components/MenuItem";
+import CircularProgress from "@mui/material/CircularProgress";
 import "../styling/Menu.css";
 
 const Menu = () => {
   const [items, setItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    setIsLoading(true);
     fetch("https://reactdinebackend.onrender.com/api/dishes")
       .then((response) => response.json())
-      .then((data) => setItems(data))
-      .catch((error) => console.error(error));
+      .then((data) => {
+        setItems(data);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error(error);
+        setIsLoading(false);
+      });
   }, []);
 
   const mainDishes = [
@@ -32,6 +41,10 @@ const Menu = () => {
     "d20",
   ];
   const desserts = ["d12", "d15", "d19"];
+
+  if (isLoading) {
+    return <CircularProgress />; // Show CircularProgress when loading
+  }
 
   return (
     <div className="menu">
