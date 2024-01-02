@@ -146,6 +146,10 @@ app.post("/api/orders", async (req, res) => {
   res.status(201).json({ message: "Order created!" });
 });
 
+app.get("/healthCheck", (req, res) => {
+  res.status(200).send("all good");
+});
+
 app.use((req, res) => {
   if (req.method === "OPTIONS") {
     return res.sendStatus(200);
@@ -154,8 +158,6 @@ app.use((req, res) => {
   res.status(404).json({ message: "Not found" });
 });
 
-app.get("/healthCheck", (req, res) => {
-  res.status(200).send("all good");
-});
+
 
 module.exports = app;
