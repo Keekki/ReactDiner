@@ -1,17 +1,12 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/x2BvhCig)
-# Final Project
+# ReactDine
+This is a project made in a web dev course
+The app is deployed using Microsoft Azure and Render but
+it is deployed from a different repository, but I kept the
+Azure workflows here too. The app runs in the following url
+(NOTE: if the page hasn't been visited for a while, the backend
+shuts itself down since I'm using a free service. Wait for a minute
+and it should boot itself back up. You'll know when it is up 
+when the menu has loaded and a video starts playing in the background
+of the front page!)
 
-### Advanced Web Programming
-
-![Alt text](image.png)
-
-## Project
-
-ReactDine – Your Digital Gateway to React Diner’s Kitchen
-
-## Project Description
-
-ReactDine is a dedicated online ordering system for the React Diner, designed to provide a seamless and interactive way for customers to view the menu, create food orders, and enjoy a user-friendly checkout process. Built with React, this application will offer a rich, dynamic user experience with an emphasis on the unique branding and offerings of React Diner.
-
-
-NOTE!! THE FONT OF THE LOGO AND THE MENU HEADERS WAS SUPPOSED TO BE A WEB SAFE FONT, BUT WHEN TESTING, I NOTICED THAT ON SOME MASHINES THE CURSIVE FONT DOESNT WORK!!
+URL to the page: https://delightful-sky-0dd9f7d03.4.azurestaticapps.net/
